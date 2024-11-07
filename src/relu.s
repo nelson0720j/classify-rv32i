@@ -28,8 +28,20 @@ relu:
     li t1, 0             
 
 loop_start:
-    # TODO: Add your own implementation
+    beqz a1, end
+    
+    lw t2, 0(a0) # t2 is array[i]
+    bge t2, zero, skip
+    sw zero, 0(a0)
 
+skip:
+    addi a1, a1, -1
+    addi a0, a0, 4
+    j loop_start
+
+end:
+    ret
+    
 error:
     li a0, 36          
     j exit          

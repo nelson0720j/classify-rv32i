@@ -27,10 +27,27 @@ argmax:
 
     lw t0, 0(a0)
 
-    li t1, 0
-    li t2, 1
+    li t1, 0 # store current max
+    li t2, 0 # store current index
+    li t4, 0 # store max index
 loop_start:
-    # TODO: Add your own implementation
+    beqz a1, end
+    lw t3, 0(a0) # load current value
+    blt t3 t1 skip
+
+    # new max
+    addi t1 t3 0
+    addi t4 t2 0
+
+skip:
+    addi a1 a1 -1
+    addi t2 t2 1
+    addi a0 a0 4
+    j loop_start
+
+end:
+    addi a0 t4 0
+    ret
 
 handle_error:
     li a0, 36
