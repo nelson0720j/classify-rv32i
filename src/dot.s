@@ -117,8 +117,8 @@ add_to_sum:
 
 loop_end:
     mv a0, t0
-    addi sp, sp, 4
     lw s0, 0(sp)
+    addi sp, sp, 4
     jr ra
 
 error_terminate:
