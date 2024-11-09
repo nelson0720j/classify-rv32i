@@ -22,6 +22,11 @@ abs:
     bge t0, zero, done
 
     # TODO: Add your own implementation
+    # (t0 xor -1) + 1
+    addi t1, zero, -1
+    xor t0, t0, t1
+    addi t0, t0, 1
+    sw t0 0(a0)
 
 done:
     # Epilogue
